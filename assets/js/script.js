@@ -119,7 +119,15 @@
         });
     }
 
-
+    function setInviteName() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlParam = urlParams.get('invite') || false;
+        const Text = '';
+        if(urlParam){
+            const Text = atob(urlParam)
+            $(".coming-soon-text").prepend("<h3>"+Text+"</h3><hr/>");
+        }
+    }
 
     $("body").on("click", function () {
         $('.navigation-holder').removeClass('slideInn');
@@ -888,6 +896,8 @@
         smallNavFunctionality();
 
         smoothScrolling($("#navbar > ul > li > a[href^='#'], .preview-middle-text a.scrool[href^='#'] "), $(".wpo-site-header .navigation, .site-header .nav").innerHeight());
+
+        setInviteName();
     });
 
 
